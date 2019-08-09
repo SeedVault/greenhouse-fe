@@ -1,5 +1,5 @@
 {
-  "name": "seed-theme",
+  "name": "@seed-vault/seed-theme",
   "version": "0.0.1",
   "description": "SEED Theme for Bootstrap 4 and Vue.js",
   "main": "index.js",

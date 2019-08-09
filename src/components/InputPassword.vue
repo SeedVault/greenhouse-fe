@@ -1,7 +1,7 @@
 <template>
   <div class="form-group">
     <label :for="id">{{ label }}</label>
-    <input type="text" :id="id" v-model="inputValue" :placeholder="placeholder"
+    <input type="password" :id="id" v-model="inputValue" :placeholder="placeholder"
       :class="{'input-with-icon':true, 'form-control': true,
       'is-invalid':(validationErrors[id] !== undefined)}" />
     <icon-inside-input :icon="icon"></icon-inside-input>

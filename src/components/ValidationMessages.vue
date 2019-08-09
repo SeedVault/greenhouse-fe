@@ -5,7 +5,7 @@
     <ul>
       <!-- eslint-disable-next-line vue/require-v-for-key -->
       <li v-for="err in validationErrors[id]">
-        {{ err.msg }}
+        {{ $t(err.msg) }}
       </li>
     </ul>
   </div>

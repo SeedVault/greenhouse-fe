@@ -2,8 +2,11 @@ $primary:       #6b4c9f !default;
 $gray-400:      #ced4da !default;
 $light:         #f0edf5 !default;
 
+$red:           #f5296a !default;
+
 $theme-colors: (
-  "primary": $primary
+  "primary": $primary,
+  "danger": $red
 );
 
 // Import custom font from Google
@@ -121,6 +124,7 @@ left: 17px;
 
 .invalid-feedback {
   font-size: 90%;
+  // color: #f5296a;
 
   ul {
     padding: 0;
@@ -128,3 +132,45 @@ left: 17px;
     // list-style-type: none;
   }
 }
+
+.alert-danger {
+  color: $red;
+  background-color: #f5c6cb;
+  border-color: #f5c6cb;
+
+  ul {
+    padding: 0;
+    margin: 5px;
+    list-style-type: square;
+  }
+
+}
+
+// Footer bottom
+* {
+  box-sizing: border-box;
+ }*:before,
+ *:after {
+  box-sizing: border-box;
+ }html,
+ body {
+  height: 100%;
+  position: relative;
+ }
+
+ .main-container {
+  min-height: 100vh; /* will cover the 100% of viewport */
+  overflow: hidden;
+  display: block;
+  position: relative;
+  padding-bottom: 100px; /* height of your footer */
+ }
+
+footer {
+  padding: 20px 0px;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+
+@import "animation-check";
