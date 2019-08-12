@@ -2,7 +2,9 @@
   <div class="locale-changer">
     <form class="form-inline">
       <img :src="require('@/assets/icons/outline-language-24px@2x.svg')" class="icon" />
-      <select class="form-control form-control-sm locale-changer-select custom-select custom-select-sm" v-model="$i18n.locale">
+      <select class=
+      "form-control form-control-sm locale-changer-select custom-select custom-select-sm"
+      v-model="$i18n.locale">
         <option v-for="(lang, i) in langs" :key="`Lang${i}`"
         :value="lang" @click="changeLocale(lang)">{{ languageName(lang) }}</option>
       </select>
@@ -20,21 +22,22 @@ export default {
   methods: {
     changeLocale(lang) {
       this.$i18n.locale = lang;
-      this.$router.push({ name: this.$route.name, params: { locale: this.$i18n.locale }, query: this.$route.query });
+      this.$router.push({
+        name: this.$route.name,
+        params: { locale: this.$i18n.locale },
+        query: this.$route.query,
+      });
     },
     languageName(lang) {
       switch (lang) {
         case 'en':
           return 'English';
-          break;
         case 'es':
           return 'Español';
-          break;
         default:
           return lang;
-          break;
       }
-    }
+    },
   },
 };
 </script>
