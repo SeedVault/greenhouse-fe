@@ -34,19 +34,15 @@
               </ul>
 
               <ul class="nav flex-column sidebar__menu--divider">
-                <li class="nav-item">
-                   <a class="nav-link" href="https://127.0.0.1:9000">
-                    <img src="@/assets/icons/outline-security-24px@2x.svg" />
-                    {{ $t('apps.accounts') }}
-                  </a>
-                </li>
-                <li class="nav-item">
-                   <a class="nav-link" href="https://127.0.0.1:9002">
-                    <img src="@/assets/icons/outline-security-24px@2x.svg" />
-                    {{ $t('apps.greenhouse') }}
-                  </a>
-                </li>
+                <app-menu-app
+                  v-for="item in apps"
+                  v-bind:key="item.url"
+                  v-bind:text="item.text"
+                  v-bind:icon="item.icon"
+                  v-bind:url="item.url"
+                ></app-menu-app>
               </ul>
+
               <ul class="nav flex-column sidebar__menu--divider">
                 <li class="nav-item">
                   <a class="nav-link" href="/auth/logout">
@@ -85,16 +81,24 @@
 
 <script>
 import AppMenuItem from 'seed-theme/src/components/AppMenuItem.vue';
+import AppMenuApp from 'seed-theme/src/components/AppMenuApp.vue';
 export default {
   name: 'AppLayout',
   components: {
     AppMenuItem,
+    AppMenuApp,
   },
   mounted () {
     document.body.className = 'body-gray'
   },
   beforeDestroy () {
     document.body.className = ''
+  },
+  methods: {
+    seedAppUrl(url) {
+      return url;
+      //return `${url}/${this.lang}`;
+    }
   },
   computed: {
     user () {
@@ -103,9 +107,15 @@ export default {
     menu () {
       return this.$store.getters.menu
     },
+    apps () {
+      return this.$store.getters.apps
+    },
     logo() {
       return this.$store.getters.logo
-    }
+    },
+    lang() {
+      return this.$store.getters.lang
+    },
   },
 }
 </script>
