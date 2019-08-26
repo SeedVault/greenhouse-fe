@@ -16,8 +16,9 @@
                 <img class="align-self-start mr-3 rounded-circle" src="@/assets/images/avatar@2x.svg" />
               </template>
               <div class="media-body">
-                <div class="sidebar__profile--email">{{ user.email }}</div>
+
                 <div class="sidebar__profile--username">{{ user.username }}</div>
+                <div class="sidebar__profile--email">{{ user.email }}</div>
               </div>
             </div>
 
