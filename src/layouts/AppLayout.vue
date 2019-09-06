@@ -200,7 +200,7 @@ export default {
     min-height: 80%;
     margin-top: 20px;
     @media (min-width: 576px) {
-      padding-left: 40px;
+      padding-left: 20px;
     }
   }
 

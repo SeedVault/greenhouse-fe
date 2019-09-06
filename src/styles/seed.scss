@@ -36,7 +36,7 @@ $input-placeholder-color:               $gray-400 !default;
 $custom-select-focus-box-shadow: 0;
 $custom-select-focus-border-color:  $component-active-bg !default;
 
-$form-group-margin-bottom:              1.5rem !default;
+$form-group-margin-bottom:              0.8rem !default;
 
 $custom-checkbox-indicator-border-radius: .25rem !default;
 
@@ -145,6 +145,53 @@ left: 17px;
   }
 
 }
+
+.row-form {
+  margin-top: 1rem;
+}
+
+.button-area {
+  margin-top: 1rem;
+}
+
+// Back
+a.back {
+  font-size: 16px;
+  padding: 13px 20px 13px 0px;
+  color: #686b77;
+  img {
+    width: 28px;
+    text-align: right;
+  }
+
+  &:hover {
+    color: #6b4c9f;
+    font-weight: 500;
+    cursor: pointer;
+    img {
+      filter: invert(38%) sepia(13%) saturate(2389%) hue-rotate(221deg) brightness(75%) contrast(92%);
+    }
+  }
+}
+
+// Icon hover
+.icon-hover {
+  &:hover {
+    color: #6b4c9f;
+    font-weight: 500;
+    cursor: pointer;
+    img {
+      filter: invert(38%) sepia(13%) saturate(2389%) hue-rotate(221deg) brightness(75%) contrast(92%);
+    }
+  }
+}
+
+
+// Modals
+.modal-backdrop {
+  background-color: rgba(0,0,0,.2);
+}
+
 
 // Footer bottom
 * {

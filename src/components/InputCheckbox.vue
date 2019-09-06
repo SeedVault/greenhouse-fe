@@ -3,7 +3,7 @@
     <div class="custom-control custom-checkbox custom-control-inline">
       <input
         :id="id"
-        v-model="inputValue"
+        v-bind:value="value" v-on:input="$emit('input', $event.target.value)"
         type="checkbox"
         class="custom-control-input"
         true-value="1"
@@ -17,14 +17,6 @@
 <script>
 export default {
   props: ['id', 'value', 'label'],
-  data() {
-    return { inputValue: this.value };
-  },
-  watch: {
-    inputValue(val) {
-      this.$emit('input', val);
-    },
-  },
 };
 </script>
 

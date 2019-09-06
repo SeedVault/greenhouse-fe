@@ -6,7 +6,7 @@
       'is-invalid':(validationErrors[id] !== undefined)}"></select> -->
     <b-form-select :id="id"
       :placeholder="placeholder"
-      v-model="inputValue"
+      v-bind:value="value" v-on:input="$emit('input', $event.target.value)"
       :options="options"
       :class="{'input-with-icon':true, 'form-control': true,
       'is-invalid':(validationErrors[id] !== undefined)}" />
@@ -19,13 +19,5 @@
 <script>
 export default {
   props: ['id', 'value', 'label', 'placeholder', 'icon', 'options', 'validationErrors'],
-  data() {
-    return { inputValue: this.value };
-  },
-  watch: {
-    inputValue(val) {
-      this.$emit('input', val);
-    },
-  },
 };
 </script>

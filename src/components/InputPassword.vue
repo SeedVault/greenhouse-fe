@@ -1,7 +1,7 @@
 <template>
   <div class="form-group">
     <label :for="id">{{ label }}</label>
-    <input type="password" :id="id" v-model="inputValue" :placeholder="placeholder"
+    <input type="password" :id="id" v-bind:value="value" v-on:input="$emit('input', $event.target.value)" :placeholder="placeholder"
       :class="{'input-with-icon':true, 'form-control': true,
       'is-invalid':(validationErrors[id] !== undefined)}" />
     <icon-inside-input :icon="icon"></icon-inside-input>
@@ -12,15 +12,5 @@
 <script>
 export default {
   props: ['id', 'value', 'label', 'placeholder', 'icon', 'validationErrors'],
-  data() {
-    return {
-      inputValue: this.value,
-    };
-  },
-  watch: {
-    inputValue(val) {
-      this.$emit('input', val);
-    },
-  },
 };
 </script>
