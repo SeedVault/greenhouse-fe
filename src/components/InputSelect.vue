@@ -1,16 +1,12 @@
 <template>
   <div class="form-group">
     <label :for="id">{{ label }}</label>
-    <!-- <select :id="id" v-model="inputValue" :options="options" :placeholder="placeholder"
+    <select :id="id" :placeholder="placeholder"
+      :value="value" @input="$emit('input', $event.target.value)"
       :class="{'input-with-icon':true, 'form-control': true,
-      'is-invalid':(validationErrors[id] !== undefined)}"></select> -->
-    <b-form-select :id="id"
-      :placeholder="placeholder"
-      v-bind:value="value" v-on:input="$emit('input', $event.target.value)"
-      :options="options"
-      :class="{'input-with-icon':true, 'form-control': true,
-      'is-invalid':(validationErrors[id] !== undefined)}" />
-
+      'is-invalid':(validationErrors[id] !== undefined)}">
+        <option v-for="option in options" :value="option.value">{{ option.text }}</option>
+    </select>
     <icon-inside-input :icon="icon"></icon-inside-input>
     <validation-messages :id="id" :validationErrors="validationErrors"></validation-messages>
   </div>
