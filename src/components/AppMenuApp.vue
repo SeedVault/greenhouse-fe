@@ -1,9 +1,9 @@
 <template>
-<li class="nav-item">
-  <a class="nav-link" :href="seedAppUrl(url)">
-    <img :src="require('@/assets/icons/' + icon)" />{{ $t(text) }}
-  </a>
-</li>
+  <li class="nav-item">
+    <a class="nav-link" :href="seedAppUrl(url)">
+      <img :src="require('@/assets/icons/' + icon)" />{{ $t(text) }}
+    </a>
+  </li>
 </template>
 
 <script>
@@ -20,7 +20,7 @@ export default {
       return this.$store.getters.lang
     },
   },
-}
+};
 </script>
 
 <style lang="scss" scoped>
@@ -40,7 +40,8 @@ export default {
       color: #6b4c9f;
       font-weight: 500;
       img {
-        filter: invert(38%) sepia(13%) saturate(2389%) hue-rotate(221deg) brightness(75%) contrast(92%);
+        filter: invert(38%) sepia(13%) saturate(2389%) hue-rotate(221deg)
+        brightness(75%) contrast(92%);
       }
     }
 
@@ -48,7 +49,8 @@ export default {
       color: #6b4c9f;
       font-weight: 500;
       img {
-        filter: invert(38%) sepia(13%) saturate(2389%) hue-rotate(221deg) brightness(75%) contrast(92%);
+        filter: invert(38%) sepia(13%) saturate(2389%) hue-rotate(221deg)
+        brightness(75%) contrast(92%);
       }
     }
   }

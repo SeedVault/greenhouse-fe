@@ -103,23 +103,42 @@ $modal-header-padding:              1rem 2rem 1rem 2rem !default;
 }
 
 .input-icon-wrapper {
-position: relative;
-/* display: flex; */
-align-items: center;
-justify-content: center;
-/* height: 54px;
-width: 20px;
-top: -55px;
-left: 17px;*/
-height: 0px;
-width: 20px;
-top: -41px;
-left: 17px;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+  height: 0px;
+  width: 20px;
+  top: -41px;
+  left: 17px;
 
   img {
     vertical-align: middle;
     border-style: none;
   }
+}
+
+.textarea-with-icon {
+  height: 166px;
+  padding-left: 45px;
+}
+
+.textarea-icon-wrapper {
+  position: relative;
+  align-items: center;
+  justify-content: center;
+  height: 0px;
+  width: 20px;
+  top: -150px;
+  left: 17px;
+
+  img {
+    vertical-align: middle;
+    border-style: none;
+  }
+}
+
+.nl2br {
+  white-space: pre;
 }
 
 .invalid-feedback {

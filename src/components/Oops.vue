@@ -10,7 +10,7 @@
 
 <script>
 export default {
-  name: 'Oops'
+  name: 'Oops',
 }
 </script>
 
