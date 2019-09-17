@@ -75,6 +75,7 @@ export default {
         self.axios.post(self.urlToSave, formData
         )
         .then((result) => {
+          self.$emit('picture-saved', result.data);
           self.savingPicture = false;
           self.showImageControls = false;
         }).catch((error) => {
