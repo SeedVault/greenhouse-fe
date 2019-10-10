@@ -4,9 +4,17 @@
       <b-form-row align-v="center">
         <b-col md="2">
           <div class="sidebar">
-            <center>
+            <!-- <center>
               <img class="sidebar__logo" :src="logo" />
-            </center>
+            </center> -->
+
+            <div class="sidebar__profile media" style="margin-top: 37px;margin-bottom: 40px;">
+              <img class="align-self-start mr-3" :src="logoImage" style="margin-left:5px;width:30px;height:30px" />
+              <div class="media-body">
+                <!-- <img class="" src="/images/logo_separator.png" style="floating:right;width: 1px; height:30px;margin-right: 5px;"/> -->
+                <img class="" :src="logoText" :style="logoTextStyle" />
+              </div>
+            </div>
 
             <div class="sidebar__profile media">
               <template v-if="user.picture != ''">
@@ -16,7 +24,6 @@
                 <img class="align-self-start mr-3 rounded-circle" src="@/assets/images/avatar@2x.svg" />
               </template>
               <div class="media-body">
-
                 <div class="sidebar__profile--username">{{ user.username }}</div>
                 <div class="sidebar__profile--email">{{ user.email }}</div>
               </div>
@@ -113,6 +120,15 @@ export default {
     },
     logo() {
       return this.$store.getters.logo
+    },
+    logoImage() {
+      return this.$store.getters.logoImage
+    },
+    logoText() {
+      return this.$store.getters.logoText
+    },
+    logoTextStyle() {
+      return `padding-left:5px;height:30px;width:${this.$store.getters.logoTextWidth};`;
     },
     lang() {
       return this.$store.getters.lang
