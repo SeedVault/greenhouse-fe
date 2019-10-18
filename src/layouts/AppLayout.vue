@@ -34,21 +34,14 @@
               <ul class="nav flex-column">
                 <app-menu-item
                   v-for="item in menu"
-                  v-bind:key="item.target"
+                  v-bind:key="item.id"
                   v-bind:text="item.text"
                   v-bind:icon="item.icon"
                   v-bind:target="item.target"
-                ></app-menu-item>
-              </ul>
-
-              <ul class="nav flex-column sidebar__menu--divider">
-                <app-menu-app
-                  v-for="item in apps"
-                  v-bind:key="item.url"
-                  v-bind:text="item.text"
-                  v-bind:icon="item.icon"
                   v-bind:url="item.url"
-                ></app-menu-app>
+                  v-bind:type="item.type"
+                  v-bind:style="item.styles"
+                ></app-menu-item>
               </ul>
 
               <ul class="nav flex-column sidebar__menu--divider">
@@ -89,12 +82,10 @@
 
 <script>
 import AppMenuItem from 'seed-theme/src/components/AppMenuItem.vue';
-import AppMenuApp from 'seed-theme/src/components/AppMenuApp.vue';
 export default {
   name: 'AppLayout',
   components: {
     AppMenuItem,
-    AppMenuApp,
   },
   mounted () {
     document.body.className = 'body-gray'

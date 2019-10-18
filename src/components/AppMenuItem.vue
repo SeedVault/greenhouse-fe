@@ -1,15 +1,39 @@
 <template>
-<li class="nav-item">
-  <router-link class="nav-link" :to="{ name: target}">
-    <img :src="require('@/assets/icons/' + icon)" />{{ $t(text) }}
-  </router-link>
-</li>
+  <div>
+    <template v-if="type == 'divider'">
+      <li class="menu--divider"></li>
+    </template>
+    <template v-else>
+      <li class="nav-item" :style="this.styles">
+        <template v-if="target">
+          <router-link class="nav-link" :to="{ name: target}">
+              <img :src="require('@/assets/icons/' + icon)" />{{ $t(text) }}
+            </router-link>
+        </template>
+        <template v-else>
+          <a class="nav-link" :href="seedAppUrl(url)">
+            <img :src="require('@/assets/icons/' + icon)" />{{ $t(text) }}
+          </a>
+        </template>
+      </li>
+    </template>
+  </div>
 </template>
 
 <script>
 export default {
   name: 'AppMenuItem',
-  props: ['text', 'icon', 'target'],
+  props: ['type', 'text', 'icon', 'target', 'url', 'styles'],
+  methods: {
+    seedAppUrl(url) {
+      return url.replace(/{{ locale }}/, this.lang);
+    }
+  },
+  computed: {
+    lang() {
+      return this.$store.getters.lang
+    },
+  },
 }
 </script>
 
@@ -42,4 +66,11 @@ export default {
       }
     }
   }
+
+  .menu--divider {
+    margin-top: 15px;
+    padding-top: 15px;
+    border-top: 1px solid #dedfe0;
+  }
+
 </style>
