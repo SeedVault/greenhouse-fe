@@ -3,6 +3,11 @@
     <template v-if="type == 'divider'">
       <li class="menu--divider"></li>
     </template>
+    <template v-else-if="type == 'group'">
+      <li class="group-title" :style="this.styles">
+        {{ $t(text) }}
+      </li>
+    </template>
     <template v-else>
       <li class="nav-item" :style="this.styles">
         <template v-if="target">
@@ -73,4 +78,13 @@ export default {
     border-top: 1px solid #dedfe0;
   }
 
+  .group-title {
+    text-transform: uppercase;
+    padding-left: 20px;
+    color: #686b77;
+    font-weight: bold;
+    font-size: 12px;
+    padding-top: 13px;
+    padding-bottom: 10px;
+  }
 </style>

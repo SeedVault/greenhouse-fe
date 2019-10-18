@@ -106,9 +106,6 @@ export default {
     menu () {
       return this.$store.getters.menu
     },
-    apps () {
-      return this.$store.getters.apps
-    },
     logo() {
       return this.$store.getters.logo
     },
