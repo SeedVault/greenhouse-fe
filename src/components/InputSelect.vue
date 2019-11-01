@@ -1,6 +1,6 @@
 <template>
   <div class="form-group">
-    <label :for="id">{{ label }}</label>
+    <label :for="id">{{ label }} <help-tooltip :tooltip="tooltip"></help-tooltip></label>
     <select :id="id" :placeholder="placeholder"
       :value="value" @input="$emit('input', $event.target.value)"
       :class="{'input-with-icon':true, 'form-control': true,
@@ -16,6 +16,6 @@
 
 <script>
 export default {
-  props: ['id', 'value', 'label', 'placeholder', 'icon', 'options', 'validationErrors'],
+  props: ['id', 'value', 'label', 'placeholder', 'icon', 'options', 'tooltip', 'validationErrors'],
 };
 </script>

@@ -1,5 +1,5 @@
 <template>
-  <img :src="require('@/assets/icons/outline-help_outline-24px@2x.svg')" :title="tooltip" v-if="tooltip.length > 0" class="help-tooltip" />
+  <img :src="require('@/assets/icons/outline-help_outline-24px@2x.svg')" :title="tooltip" v-if="typeof tooltip == 'string' && tooltip.length > 0" class="help-tooltip" />
 </template>
 <script>
 export default {

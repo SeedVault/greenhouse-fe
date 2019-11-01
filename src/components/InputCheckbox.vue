@@ -9,14 +9,14 @@
         true-value="1"
         false-value="0"
       />
-      <label class="custom-control-label" :for="id"> {{label}}</label>
+      <label class="custom-control-label" :for="id"> {{label}} <help-tooltip :tooltip="tooltip"></help-tooltip></label>
     </div>
   </div>
 </template>
 
 <script>
 export default {
-  props: ['id', 'value', 'label'],
+  props: ['id', 'value', 'label', 'tooltip'],
 };
 </script>
 
