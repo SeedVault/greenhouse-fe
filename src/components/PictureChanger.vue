@@ -27,7 +27,8 @@
         />
       </label>
       <br>
-      <button v-on:click="saveClicked" class="btn btn-sm btn-primary btn-block mb-2">{{ $t('common.save_picture') }}</button>
+      <button v-on:click="saveClicked" class="btn btn-sm btn-primary btn-block mb-2">
+        {{ $t('common.save_picture') }}</button>
       <br>
       <img ref="image">
     </div>
@@ -37,10 +38,11 @@
 
 <script>
 import VueAvatar from 'seed-theme/src/components/VueAvatar.vue';
+
 export default {
   name: 'PictureChanger',
   components: {
-    VueAvatar
+    VueAvatar,
   },
   data() {
     return {
@@ -52,8 +54,8 @@ export default {
       pictureSaved: false,
       rotation: 0,
       scale: 1,
-      borderRadius: 0
-    }
+      borderRadius: 0,
+    };
   },
   methods: {
     loadImage(pictureUrl, filename, urlToSave) {
@@ -65,23 +67,23 @@ export default {
     saveClicked() {
       const self = this;
       this.savingPicture = true;
-      var img = this.$refs.vueavatar.getImageScaled();
+      // const img = this.$refs.vueavatar.getImageScaled();
       // this.$refs.image.src = img.toDataURL('image/jpeg', 1.0);
       const canvas = document.getElementById('avatarEditorCanvas');
-      canvas.toBlob(function(blob) {
+      canvas.toBlob((blob) => {
         const formData = new FormData();
         formData.append('pictureFile', blob, self.picture);
         // Post via axios or other transport method
-        self.axios.post(self.urlToSave, formData
-        )
-        .then((result) => {
-          self.$emit('picture-saved', result.data);
-          self.savingPicture = false;
-          self.showImageControls = false;
-        }).catch((error) => {
-          self.savingPicture = false;
-          self.opps = true;
-        });
+        self.axios.post(self.urlToSave, formData)
+          .then((result) => {
+            self.$emit('picture-saved', result.data);
+            self.savingPicture = false;
+            self.showImageControls = false;
+          })
+          .catch(() => { // error
+            self.savingPicture = false;
+            self.opps = true;
+          });
       }, 'image/jpeg', 1.0);
     },
     onImageReady() {
@@ -91,8 +93,8 @@ export default {
     onFileSelected() {
       this.showImageControls = true;
     },
-  }
-}
+  },
+};
 </script>
 
 <style lang="scss" scoped>
@@ -103,4 +105,3 @@ canvas {
 }
 
 </style>
-

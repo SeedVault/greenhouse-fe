@@ -23,7 +23,7 @@
 
 <style type="text/css">
 .cursorPointer{
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .cursorGrab{
@@ -40,6 +40,7 @@
 </style>
 
 <script>
+/* eslint-disable */
 export default {
     props: {
         image: {

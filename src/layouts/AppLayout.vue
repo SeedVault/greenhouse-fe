@@ -9,9 +9,11 @@
             </center> -->
 
             <div class="sidebar__profile media" style="margin-top: 37px;margin-bottom: 40px;">
-              <img class="align-self-start mr-3" :src="logoImage" style="margin-left:5px;width:30px;height:30px" />
+              <img class="align-self-start mr-3" :src="logoImage"
+              style="margin-left:5px;width:30px;height:30px" />
               <div class="media-body">
-                <!-- <img class="" src="/images/logo_separator.png" style="floating:right;width: 1px; height:30px;margin-right: 5px;"/> -->
+                <!-- <img class="" src="/images/logo_separator.png"
+                style="floating:right;width: 1px; height:30px;margin-right: 5px;"/> -->
                 <img class="" :src="logoText" :style="logoTextStyle" />
               </div>
             </div>
@@ -21,7 +23,8 @@
                 <img class="align-self-start mr-3 rounded-circle" :src="user.picture" />
               </template>
               <template v-else>
-                <img class="align-self-start mr-3 rounded-circle" src="@/assets/images/avatar@2x.svg" />
+                <img class="align-self-start mr-3 rounded-circle"
+                src="@/assets/images/avatar@2x.svg" />
               </template>
               <div class="media-body">
                 <div class="sidebar__profile--username">{{ user.username }}</div>
@@ -82,47 +85,48 @@
 
 <script>
 import AppMenuItem from 'seed-theme/src/components/AppMenuItem.vue';
+
 export default {
   name: 'AppLayout',
   components: {
     AppMenuItem,
   },
-  mounted () {
-    document.body.className = 'body-gray'
+  mounted() {
+    document.body.className = 'body-gray';
   },
-  beforeDestroy () {
-    document.body.className = ''
+  beforeDestroy() {
+    document.body.className = '';
   },
   methods: {
     seedAppUrl(url) {
       return url;
-      //return `${url}/${this.lang}`;
-    }
+      // return `${url}/${this.lang}`;
+    },
   },
   computed: {
-    user () {
-      return this.$store.getters.user
+    user() {
+      return this.$store.getters.user;
     },
-    menu () {
-      return this.$store.getters.menu
+    menu() {
+      return this.$store.getters.menu;
     },
     logo() {
-      return this.$store.getters.logo
+      return this.$store.getters.logo;
     },
     logoImage() {
-      return this.$store.getters.logoImage
+      return this.$store.getters.logoImage;
     },
     logoText() {
-      return this.$store.getters.logoText
+      return this.$store.getters.logoText;
     },
     logoTextStyle() {
       return `padding-left:5px;height:30px;width:${this.$store.getters.logoTextWidth};`;
     },
     lang() {
-      return this.$store.getters.lang
+      return this.$store.getters.lang;
     },
   },
-}
+};
 </script>
 
 <style lang="scss" scoped>
@@ -177,7 +181,8 @@ export default {
           color: #6b4c9f;
           font-weight: 500;
           img {
-            filter: invert(38%) sepia(13%) saturate(2389%) hue-rotate(221deg) brightness(75%) contrast(92%);
+            filter: invert(38%) sepia(13%) saturate(2389%) hue-rotate(221deg)
+            brightness(75%) contrast(92%);
           }
         }
 
@@ -185,7 +190,8 @@ export default {
           color: #6b4c9f;
           font-weight: 500;
           img {
-            filter: invert(38%) sepia(13%) saturate(2389%) hue-rotate(221deg) brightness(75%) contrast(92%);
+            filter: invert(38%) sepia(13%) saturate(2389%) hue-rotate(221deg)
+            brightness(75%) contrast(92%);
           }
         }
       }

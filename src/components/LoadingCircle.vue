@@ -11,7 +11,7 @@
 export default {
   name: 'LoadingCircle',
   props: ['loading'],
-}
+};
 </script>
 
 <style lang="scss" scoped>

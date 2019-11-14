@@ -10,7 +10,12 @@
 </template>
 
 <script>
+import HelpTooltip from 'seed-theme/src/components/HelpTooltip.vue';
+
 export default {
+  components: {
+    HelpTooltip,
+  },
   props: ['id', 'value', 'label', 'placeholder', 'icon', 'rows', 'tooltip', 'validationErrors'],
 };
 </script>

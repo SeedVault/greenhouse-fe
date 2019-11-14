@@ -24,10 +24,11 @@ export default {
     changeLocale(lang) {
       this.$i18n.locale = lang;
       // save cookie
-      var myDate = new Date();
+      const myDate = new Date();
       myDate.setMonth(myDate.getMonth() + 120);
-      document.cookie = "lang=" + lang + ";expires=" + myDate
-                  + ";domain=." + window.location.hostname + ";path=/";
+      // document.cookie = "lang=" + lang + ";expires=" + myDate
+      //             + ";domain=." + window.location.hostname + ";path=/";
+      document.cookie = `lang=${lang};expires=${myDate};domain=.${window.location.hostname};path=/`;
       // change route
       this.$router.push({
         name: this.$route.name,

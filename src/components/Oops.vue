@@ -11,7 +11,7 @@
 <script>
 export default {
   name: 'Oops',
-}
+};
 </script>
 
 <style lang="scss" scoped>
