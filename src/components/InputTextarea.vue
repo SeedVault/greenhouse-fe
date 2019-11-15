@@ -1,7 +1,8 @@
 <template>
   <div class="form-group">
     <label :for="id">{{ label }} <help-tooltip :tooltip="tooltip"></help-tooltip></label>
-    <textarea :id="id" v-bind:value="value" v-on:input="$emit('input', $event.target.value)" :placeholder="placeholder"
+    <textarea :id="id" v-bind:value="value" v-on:input="$emit('input', $event.target.value)"
+    :placeholder="placeholder"
       :class="{'textarea-with-icon':true, 'form-control': true,
       'is-invalid':(validationErrors[id] !== undefined)}" :rows="rows"></textarea>
     <icon-inside-textarea :icon="icon"></icon-inside-textarea>
