@@ -1,3 +1,22 @@
+<template>
+  <div class="text-center" v-if="visible">
+    <div v-bind:class="[{ 'load-complete': !loading }, 'circle-loader']">
+      <div class="checkmark draw" v-show="showCheckmark"></div>
+      <slot name="icons"></slot>
+    </div>
+    <slot name="messages"></slot>
+  </div>
+</template>
+
+<script>
+export default {
+  name: 'LoadingCheckmark',
+  props: ['visible', 'loading', 'showCheckmark'],
+};
+</script>
+
+<style lang="scss" scoped>
+@import "../scss/colors";
 $check-loader-size: 6em;
 $check-height: $check-loader-size/2;
 $check-width: $check-height/2;
@@ -7,7 +26,7 @@ $check-color: $primary;
 
 
 .circle-loader {
-  margin-bottom: $check-loader-size/2;
+  margin-bottom: $check-loader-size/4;
   border: 4px solid rgba(0, 0, 0, 0.2);
   border-left-color: $check-color;
   animation: loader-spin 1.2s infinite linear;
@@ -28,14 +47,14 @@ $check-color: $primary;
 
 .checkmark {
   //display: none;
-  
+
   &.draw:after {
     animation-duration: 800ms;
     animation-timing-function: ease;
     animation-name: checkmark;
     transform: scaleX(-1) rotate(135deg);
   }
-  
+
   &:after {
     opacity: 1;
     height: $check-height;
@@ -81,3 +100,4 @@ $check-color: $primary;
     opacity: 1;
   }
 }
+</style>

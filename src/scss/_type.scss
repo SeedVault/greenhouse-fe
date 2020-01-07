@@ -1,0 +1,37 @@
+.display-1 {
+  @include font-size($font-size-base * 3.25);
+  font-weight: 700;
+}
+
+.smallest-text {
+  font-size: 12px;
+}
+
+.medium-text {
+  font-size: 16px;
+}
+
+.nl2br {
+  white-space: pre-line;
+}
+
+a.back {
+  font-size: 16px;
+  padding: 13px 20px 13px 0px;
+  text-decoration: none;
+  color: #686b77;
+  img {
+    width: 28px;
+    text-align: right;
+  }
+
+  &:hover {
+    color: $primary;
+    font-weight: 500;
+    cursor: pointer;
+    img {
+      filter: invert(38%) sepia(13%) saturate(2389%)
+      hue-rotate(221deg) brightness(75%) contrast(92%);
+    }
+  }
+}

@@ -12,12 +12,18 @@
       <li class="nav-item" :style="this.styles">
         <template v-if="target">
           <router-link class="nav-link" :to="{ name: target}">
-              <img :src="require('@/assets/icons/' + icon)" />{{ $t(text) }}
-            </router-link>
+            <div class="d-flex flex-row">
+              <div class="mr-3"><img :src="require(`../assets/icons/${icon}.svg?data`)" /></div>
+              <div class="">{{ $t(text) }}</div>
+            </div>
+          </router-link>
         </template>
         <template v-else>
           <a class="nav-link" :href="seedAppUrl(url)">
-            <img :src="require('@/assets/icons/' + icon)" />{{ $t(text) }}
+            <div class="d-flex flex-row">
+              <div class="mr-3"><img :src="require(`../assets/icons/${icon}.svg?data`)" /></div>
+              <div class="">{{ $t(text) }}</div>
+            </div>
           </a>
         </template>
       </li>
@@ -26,18 +32,21 @@
 </template>
 
 <script>
+import { reactive, toRefs } from '@vue/composition-api';
+
 export default {
   name: 'AppMenuItem',
   props: ['type', 'text', 'icon', 'target', 'url', 'styles'],
-  methods: {
-    seedAppUrl(url) {
-      return url.replace(/{{ locale }}/, this.lang);
-    },
-  },
-  computed: {
-    lang() {
-      return this.$store.getters.lang;
-    },
+  setup(props, context) {
+    const data = reactive({ });
+
+    function seedAppUrl(url) {
+      return url.replace(/{{ locale }}/, context.root.$store.getters.lang);
+    }
+
+    return {
+      ...toRefs(data), seedAppUrl,
+    };
   },
 };
 </script>
@@ -45,11 +54,11 @@ export default {
 <style lang="scss" scoped>
   a {
     font-size: 16px;
-    padding: 13px 20px 13px 20px;
+    padding: 13px 18px;
     color: #686b77;
     img {
-      padding-right: 10px;
-      width: 28px;
+      // padding-right: 10px;
+      width: 18px;
       text-align: right;
     }
 
@@ -89,4 +98,5 @@ export default {
     padding-top: 13px;
     padding-bottom: 10px;
   }
+
 </style>

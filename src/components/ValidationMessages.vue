@@ -1,10 +1,7 @@
 <template>
-  <!-- eslint-disable-next-line vue/valid-v-model -->
-  <div class="invalid-feedback" v-model="validationErrors[id]"
-    v-if="validationErrors[id] !== undefined">
+  <div class="validation-message-error mt-1" v-if="typeof(validationErrors[id]) !== undefined">
     <ul>
-      <!-- eslint-disable-next-line vue/require-v-for-key -->
-      <li v-for="err in validationErrors[id]">
+      <li v-for="(err, index) in validationErrors[id]" :key="index">
         {{ $t(err.msg) }}
       </li>
     </ul>

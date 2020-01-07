@@ -1,0 +1,11 @@
+// Icon hover
+.icon-hover {
+  &:hover {
+    color: $primary;
+    font-weight: 500;
+    cursor: pointer;
+    img {
+      filter: invert(38%) sepia(13%) saturate(2389%) hue-rotate(221deg) brightness(75%) contrast(92%);
+    }
+  }
+}

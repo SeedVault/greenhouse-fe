@@ -1,0 +1,57 @@
+.input-group {
+  border: 2px solid $input-border-color; // $border-color;
+  border-radius: $border-radius;
+
+  &-focus {
+    border: 2px solid $input-focus-border-color;
+  }
+
+  &-is-invalid {
+    border: 2px solid $form-feedback-invalid-color;
+
+    &-focus {
+      box-shadow: 0 0 0 0.2rem rgba(245, 41, 106, 0.25);
+    }
+  }
+}
+
+
+.input-group > .input-group-prepend > .input-group-icon,
+.input-group-lg > .input-group-prepend > .input-group-icon {
+  background-color: transparent;
+  border: 0;
+  padding-right: 1px;
+}
+
+.input-group > .input-group-append > .input-group-icon,
+.input-group-lg > .input-group-append > .input-group-icon {
+  background-color: transparent;
+  border: 0;
+  padding-left: 1px;
+}
+
+.input-group > .form-control.is-invalid:focus {
+  box-shadow: none;
+}
+
+.validation-message-error {
+  font-size: 90%;
+  color: $red;
+
+  ul {
+    padding: 0;
+    padding-left: 17px;
+  }
+}
+
+.thin-borders {
+  border: 1px solid #ced4da;
+
+  &:hover {
+    border: 1px solid $primary;
+  }
+}
+
+.thin-borders-focus {
+  border: 1px solid $primary;
+}

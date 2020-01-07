@@ -1,8 +1,8 @@
 <template>
   <div class="row">
     <div class="col-lg-12 text-center">
-      <h1>{{ $t('common.oops') }}</h1>
-      <img src="@/assets/images/error.svg" width="100px" />
+      <h1 class="display-1">{{ $t('common.oops') }}</h1>
+      <img class="mt-5 mb-4" :src="require(`../assets/images/error.svg?data`)" />
       <h4>{{ $t('common.something_went_wrong') }}</h4>
     </div>
   </div>
@@ -16,19 +16,14 @@ export default {
 
 <style lang="scss" scoped>
 h1 {
-  margin-top: 10%;
   color: #80619c;
-  font-weight: bold;
-  font-size: 3rem;
 }
 
 img {
-  margin-top: 30px;
-  margin-bottom: 20px;
+  width: 100px;
 }
 
 h4 {
   color: #80619c;
-  margin-bottom: 20%;
 }
 </style>

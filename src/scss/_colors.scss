@@ -1,0 +1,16 @@
+$primary:       #6b4c9f !default;
+$gray-400:      #ced4da !default;
+$light:         #f0edf5 !default;
+
+$red:           #f5296a !default;
+$dark:          #323743 !default;
+
+$theme-colors: (
+  "primary": $primary,
+  "danger": $red,
+  "dark": $dark
+);
+
+.primary-color{
+  color: $primary;
+}

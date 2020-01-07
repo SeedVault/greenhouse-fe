@@ -1,0 +1,34 @@
+.view {
+  &__horizontal-separator {
+    border-right: 1px solid #dee2e6;
+  }
+
+  &__metadata {
+    color: #a3a8b0;
+  }
+
+  &__icon-tag {
+    height: 18px;
+    margin-right: 2px;
+  }
+
+  &__icon-timer {
+    height: 14px;
+    margin-right: 5px;
+  }
+
+  &__token-symbol {
+    height: 0.75em;
+    margin-right: 5px;
+  }
+}
+
+@include media-breakpoint-down(lg) {
+  .view {
+    &__horizontal-separator {
+      border-right: none;
+      border-bottom: 1px dotted #f6f6f6;
+      padding-bottom: 8px;
+    }
+  }
+}

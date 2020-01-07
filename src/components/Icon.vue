@@ -1,11 +1,9 @@
 <template>
-  <div>
-    <img :src="require('@/assets/icons/' + icon)" class="icon" />
-  </div>
+  <img :src="require(`../assets/icons/${icon}.svg?data`)" />
 </template>
-
 <script>
 export default {
+  name: 'Icon',
   props: ['icon'],
 };
 </script>

@@ -1,15 +1,22 @@
 <template>
-  <img :src="require('@/assets/icons/outline-help_outline-24px@2x.svg')"
+  <img src="../assets/icons/help.svg?data"
   class="help-tooltip" v-b-popover.hover="popoverConfig"
   v-if="typeof tooltip == 'string' && tooltip.length > 0" />
 </template>
 <script>
 import marked from 'marked';
 import DOMPurify from 'dompurify';
+import { VBPopover } from 'bootstrap-vue';
+
+// Note: Vue automatically prefixes the directive name with 'v-'
 
 export default {
   name: 'HelpTooltip',
   props: ['tooltip'],
+  directives: {
+    // Note that Vue automatically prefixes directive names with `v-`
+    'b-popover': VBPopover,
+  },
   computed: {
     popoverConfig() {
       return {

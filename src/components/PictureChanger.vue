@@ -1,8 +1,8 @@
 <template>
   <div>
     <vue-avatar
-      :width="228"
-      :height="228"
+      :width="200"
+      :height="200"
       :rotation="rotation"
       :borderRadius="borderRadius"
       :scale="scale"
@@ -14,10 +14,8 @@
     >
     </vue-avatar>
     <div v-show="showImageControls && !savingPicture">
-      <br>
-      <label>
-        Zoom : {{scale}}x
-        <br>
+      <label class="mt-4 mb-4">
+        <div class="mb-2">Zoom : {{scale}}x</div>
         <input
           type="range"
           min=0
@@ -26,26 +24,26 @@
           v-model='scale'
         />
       </label>
-      <br>
-      <button v-on:click="saveClicked" class="btn btn-sm btn-primary btn-block mb-2">
+      <button v-on:click="saveClicked"
+      class="btn btn-primary btn-block font-weight-bold mb-4">
         {{ $t('common.save_picture') }}</button>
-      <br>
       <img ref="image">
     </div>
-    <loading-circle :loading="savingPicture"></loading-circle>
+    <loading-checkmark :loading="savingPicture"></loading-checkmark>
   </div>
 </template>
 
 <script>
 import VueAvatar from 'seed-theme/src/components/VueAvatar.vue';
+import { reactive, toRefs } from '@vue/composition-api';
 
 export default {
   name: 'PictureChanger',
   components: {
     VueAvatar,
   },
-  data() {
-    return {
+  setup(props, context) {
+    const data = reactive({
       pictureUrl: '',
       filename: '',
       urlToSave: '',
@@ -55,44 +53,49 @@ export default {
       rotation: 0,
       scale: 1,
       borderRadius: 0,
-    };
-  },
-  methods: {
-    loadImage(pictureUrl, filename, urlToSave) {
-      this.pictureUrl = pictureUrl;
-      this.filename = filename;
-      this.urlToSave = urlToSave;
-      this.$refs.vueavatar.loadImage(this.pictureUrl);
-    },
-    saveClicked() {
-      const self = this;
-      this.savingPicture = true;
+    });
+
+    function loadImage(pictureUrl, filename, urlToSave) {
+      data.pictureUrl = pictureUrl;
+      data.filename = filename;
+      data.urlToSave = urlToSave;
+      context.refs.vueavatar.loadImage(data.pictureUrl);
+    }
+
+    function saveClicked() {
+      data.savingPicture = true;
       // const img = this.$refs.vueavatar.getImageScaled();
       // this.$refs.image.src = img.toDataURL('image/jpeg', 1.0);
       const canvas = document.getElementById('avatarEditorCanvas');
       canvas.toBlob((blob) => {
         const formData = new FormData();
-        formData.append('pictureFile', blob, self.picture);
+        formData.append('pictureFile', blob, data.picture);
         // Post via axios or other transport method
-        self.axios.post(self.urlToSave, formData)
+        context.root.axios.post(data.urlToSave, formData)
           .then((result) => {
-            self.$emit('picture-saved', result.data);
-            self.savingPicture = false;
-            self.showImageControls = false;
+            context.emit('picture-saved', result.data);
+            data.savingPicture = false;
+            data.showImageControls = false;
           })
           .catch(() => { // error
-            self.savingPicture = false;
-            self.opps = true;
+            data.savingPicture = false;
+            data.oops = true;
           });
       }, 'image/jpeg', 1.0);
-    },
-    onImageReady() {
-      this.scale = 1;
-      this.rotation = 0;
-    },
-    onFileSelected() {
-      this.showImageControls = true;
-    },
+    }
+
+    function onImageReady() {
+      data.scale = 1;
+      data.rotation = 0;
+    }
+
+    function onFileSelected() {
+      data.showImageControls = true;
+    }
+
+    return {
+      ...toRefs(data), loadImage, saveClicked, onImageReady, onFileSelected,
+    };
   },
 };
 </script>

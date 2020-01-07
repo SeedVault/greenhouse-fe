@@ -1,0 +1,11 @@
+.alert-danger {
+  color: $red;
+  background-color: #f5c6cb;
+  border-color: #f5c6cb;
+
+  ul {
+    padding: 0;
+    margin: 5px;
+    list-style-type: square;
+  }
+}

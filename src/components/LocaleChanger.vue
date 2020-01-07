@@ -1,59 +1,61 @@
 <template>
-  <div class="locale-changer">
-    <form class="form-inline">
-      <img :src="require('@/assets/icons/outline-language-24px@2x.svg')" class="icon" />
-      <select class=
-      "form-control form-control-sm locale-changer-select custom-select custom-select-sm"
+  <form class="form-inline d-flex flex-row">
+    <div>
+      <img src="../assets/icons/language.svg?data" />
+    </div>
+    <div>
+      <select class="form-control form-control-sm custom-select
+      custom-select-sm cursor-pointer border-0 no-background"
       v-model="$i18n.locale">
-        <option v-for="(lang, i) in langs" :key="`Lang${i}`"
-        :value="lang" @click="changeLocale(lang)">{{ languageName(lang) }}</option>
+        <option v-for="(locale, i) in locales" :key="`locale${i}`"
+        :value="locale" @click="changeLocale(locale)">{{ languageName(locale) }}</option>
       </select>
-    </form>
-  </div>
+    </div>
+  </form>
 </template>
 
 <script>
 
+import { ref } from '@vue/composition-api';
+
 export default {
-  data() {
-    return {
-      langs: this.$i18n.availableLocales,
-    };
-  },
-  methods: {
-    changeLocale(lang) {
-      this.$i18n.locale = lang;
-      // save cookie
+  setup(props, context) {
+    const locales = ref(context.root.$i18n.availableLocales);
+
+    function changeLocale(locale) {
+      context.root.$i18n.locale = locale;
+      // store local into a cookie
       const myDate = new Date();
       myDate.setMonth(myDate.getMonth() + 120);
-      // document.cookie = "lang=" + lang + ";expires=" + myDate
-      //             + ";domain=." + window.location.hostname + ";path=/";
-      document.cookie = `lang=${lang};expires=${myDate};domain=.${window.location.hostname};path=/`;
-      // change route
-      this.$router.push({
-        name: this.$route.name,
-        params: { locale: this.$i18n.locale },
-        query: this.$route.query,
+      document.cookie = `locale=${locale};expires=${myDate};domain=.${window.location.hostname};path=/`;
+      // change current route
+      context.root.$router.push({
+        name: context.root.$route.name,
+        params: { locale: context.root.$i18n.locale },
+        query: context.root.$route.query,
       });
-    },
-    languageName(lang) {
-      switch (lang) {
+    }
+
+    function languageName(locale) {
+      switch (locale) {
         case 'en':
           return 'English';
         case 'es':
           return 'Español';
         default:
-          return lang;
+          return locale;
       }
-    },
+    }
+
+    return {
+      locales, changeLocale, languageName,
+    };
   },
 };
 </script>
 
 <style lang="scss" scoped>
-.locale-changer-select {
-  width: auto;
-  border: 0;
-  font-size: 0.75rem;
+.no-background {
+  background-color: transparent;
 }
 </style>
