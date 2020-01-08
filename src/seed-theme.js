@@ -2,6 +2,7 @@ import Vue from 'vue';
 import 'seed-theme/src/scss/seed.scss';
 import { ModalPlugin, NavbarPlugin } from 'seed-theme/node_modules/bootstrap-vue';
 import BalanceChart from 'seed-theme/src/components/BalanceChart.vue';
+import LatestTransactions from 'seed-theme/src/components/LatestTransactions.vue';
 import CenteredErrorBox from 'seed-theme/src/components/CenteredErrorBox.vue';
 import DividerBox from 'seed-theme/src/components/DividerBox.vue';
 import FullCentered from 'seed-theme/src/components/FullCentered.vue';
@@ -56,6 +57,7 @@ Vue.mixin({
 // Global components
 Vue.component('back-box', BackBox);
 Vue.component('balance-chart', BalanceChart);
+Vue.component('latest-transactions', LatestTransactions);
 Vue.component('centered-error-box', CenteredErrorBox);
 Vue.component('divider-box', DividerBox);
 Vue.component('full-centered', FullCentered);
