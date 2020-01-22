@@ -14,7 +14,8 @@
             <div class="mr-sm-3">
               {{ $d(Date.parse(transaction.date), 'short') }}
               <div class="font-weight-light text-black-50">
-              {{ transaction.user !== ''? transaction.user:
+              {{ transaction.wallet_address_prefix !== ''?
+                `${transaction.wallet_address_prefix}...`:
                 $t('dashboard.unknown') }}
               </div>
             </div>
