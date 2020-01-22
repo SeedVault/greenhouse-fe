@@ -61,7 +61,7 @@ export default {
     const data = reactive({ });
 
     function getExplorerUrl() {
-      return `${process.env.VUE_APP_PARITY_URL_EXPLORER}/address/${props.walletAddress}/transactions`;
+      return `${process.env.VUE_APP_PARITY_URL_EXPLORER}address/${props.walletAddress}/transactions`;
     }
 
     return {
