@@ -56,12 +56,12 @@ import { reactive, toRefs } from '@vue/composition-api';
 
 export default {
   name: 'LatestTransactions',
-  props: ['transactions'],
-  setup() {
+  props: ['transactions', 'walletAddress'],
+  setup(props) {
     const data = reactive({ });
 
     function getExplorerUrl() {
-      return process.env.VUE_APP_PARITY_URL_EXPLORER;
+      return `${process.env.VUE_APP_PARITY_URL_EXPLORER}/address/${props.walletAddress}/transactions`;
     }
 
     return {
