@@ -18,7 +18,7 @@
   "homepage": "https://github.com/SeedVault/seed-theme#readme",
   "dependencies": {
     "chart.js": "^2.9.3",
-    "dompurify": "^2.0.8",
+    "dompurify": "^2.0.17",
     "marked": "^0.8.0",
     "vue-chartjs": "^3.5.0"
   },
